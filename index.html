@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>画板</title>
+  </head>
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <canvas id="canvas" width="100" height="100">
+      <script>
+        var canvas = document.getElementById("canvas");
+        //创建一个含有getElementById("canvas")属性的变量
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+        //在此变量中，使canvas绘布等于html的body的宽高
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = "none";
+        ctx.lineWidth = 8;
+        ctx.lineCap = "round";
+
+        function drawLine(x1, y1, x2, y2) {
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+
+        let painting = false;
+        let last;
+        var isTouchDevice = "ontouchstart" in document.documentElement;
+        if (isTouchDevice) {
+          canvas.ontouchstart = (e) => {
+            let x = e.touches[0].clientX;
+            let y = e.touches[0].clientY;
+            last = [x, y];
+          };
+
+          canvas.ontouchmove = (e) => {
+            let x = e.touches[0].clientX;
+            let y = e.touches[0].clientY;
+            drawLine(last[0], last[1], x, y);
+            last = [x, y];
+          };
+        }
+        //上面是手机相关，下面是网页相关
+        else {
+          canvas.onmousedown = (e) => {
+            painting = true;
+            last = [e.clientX, e.clientY];
+          };
+
+          canvas.onmousemove = (e) => {
+            if (painting === true) {
+              drawLine(last[0], last[1], e.clientX, e.clientY);
+              last = [e.clientX, e.clientY];
+            } else {
+              console.log("nothing");
+            }
+          };
+
+          canvas.onmouseup = () => {
+            painting = false;
+          };
+        }
+      </script>
+    </canvas>
+  </body>
+</html>
