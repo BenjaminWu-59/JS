@@ -297,18 +297,18 @@ let key = 'name'; obj[key] = 'frank'
 obj[name] = 'frank' // 这是错的，这使得name变成了变量，值也变得不确定
 let key = 'name'; obj.key = 'frank' // 这是错的，因为 obj.key 等价于 obj['key']
 
-   ```
+```
 
 操作如下：
 
-![](.\pictrure1\12.png)
+![](./pictrure1/12.png)
 
 **批量赋值**
 
-​```javascript
+```javascript
 let obj = {name: 'frank'}
 Object.assign(obj, {age: 18, gender: 'man'})
-   ```
+```
 
 ---
 
@@ -354,14 +354,14 @@ obj无需提前赋值，`let obj = Object.create(common)`会让obj.name的属性
 
 具体看：
 
-![](.\pictrure1\15.png)
+![](./pictrure1/15.png)
 
 ## 原型链
 
-![](.\pictrure1\14.png)
+![](./pictrure1/14.png)
 
 图中的`__prototype__：Object`是对象common的共有原型
 
 内存图为：
 
- ![](.\pictrure1\13.png)
+ ![](./pictrure1/13.png)
