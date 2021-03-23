@@ -209,21 +209,19 @@ undefined //结果为undefined，即name的属性值为undefined
 
 ​        obj. 等待跳出选项（**不推荐**）
 
-![](.\pictrure1\9.png)
+![](./pictrure1/9.png)
 
 
 
 - **判断一个属性是自身的还是共有的**
 
    ```javascript
-obj.hasOwnProperty('toString')
-
- =》
-     
-false
+   obj.hasOwnProperty('toString')
+    =》
+        false
    ```
 
-​    说明toString不是自己的而是共有的
+ 说明toString不是自己的而是共有的
 
  **'name' in obj和obj.hasOwnProperty('name') 的区别**
 
@@ -276,7 +274,7 @@ false
 
 ​    坑新人语法：`obj[key]` // 把好好的字符串 'key'变成了变量
 
-![](.\pictrure1\11.png)
+![](./pictrure1/11.png)
 
 **区分:        obj.name \ obj.['name'] \ obj.[name]** 
 
@@ -299,7 +297,7 @@ let key = 'name'; obj[key] = 'frank'
 obj[name] = 'frank' // 这是错的，这使得name变成了变量，值也变得不确定
 let key = 'name'; obj.key = 'frank' // 这是错的，因为 obj.key 等价于 obj['key']
 
-```
+   ```
 
 操作如下：
 
@@ -307,10 +305,10 @@ let key = 'name'; obj.key = 'frank' // 这是错的，因为 obj.key 等价于 o
 
 **批量赋值**
 
-```javascript
+​```javascript
 let obj = {name: 'frank'}
 Object.assign(obj, {age: 18, gender: 'man'})
-```
+   ```
 
 ---
 
